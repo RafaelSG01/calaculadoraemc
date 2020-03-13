@@ -4,16 +4,16 @@ int main()
 {
     int n1, n2, n3, divi, op, res;
     
-    int continuarcao(){
-        printf("Digite o proximo numero: ");
-        scanf("%i", &n3);
+    int operacao(){
         printf("Escolha a operacao: \n");
         printf("1 - Somar \n");
         printf("2 - Subitrair \n");
         printf("3 - Dividir \n");
         printf("4 - Multiplicar \n");
         scanf("%i", &op);
-        
+    }
+    
+    int novaOperaca(){
         if(op == 1){
             divi = divi + n3;
             
@@ -33,22 +33,46 @@ int main()
             divi = divi * n3;
             printf("%i", divi);
         }
+    }
+    
+    int continuacao(){
+        printf("Digite o proximo numero: ");
+        scanf("%i", &n3);
+        operacao();
+        
+        novaOperaca();
+        
         printf("\nQuer continuar a operacao com o resultado acima? \n");
         printf("1 - Sim \n");
         printf("2 - Não \n");
         scanf("%i", &res);
+        while( res == 1){
+            printf("Digite o proximo numero: ");
+            scanf("%i", &n3);
+            operacao();
+        
+            novaOperaca();
+            printf("\nQuer continuar a operacao com o resultado acima? \n");
+            printf("1 - Sim \n");
+            printf("2 - Não \n");
+            scanf("%i", &res);
+        }
     }
+    
+    int escolhaacao(){
+        if( res == 1){
+            continuacao();
+        }else{
+            printf("by!");
+        }
+    }
+    
     
     printf("Digite um numero: ");
     scanf("%i", &n1);
     printf("Digite o divisor: ");
     scanf("%i", &n2);
-    printf("Escolha a operacao: \n");
-    printf("1 - Somar \n");
-    printf("2 - Subitrair \n");
-    printf("3 - Dividir \n");
-    printf("4 - Multiplicar \n");
-    scanf("%i", &op);
+    operacao();
     
     if(op == 1){
         divi = n1 + n2;
@@ -75,11 +99,7 @@ int main()
     printf("2 - Não \n");
     scanf("%i", &res);
     
-    if( res == 1){
-        continuarcao();
-    }else{
-        printf("by!");
-    }
+    escolhaacao();
     
     return 0;
 }
